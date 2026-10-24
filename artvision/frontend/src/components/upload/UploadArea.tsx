@@ -133,7 +133,13 @@ export const UploadArea: React.FC<UploadAreaProps> = ({
         }
 
         const res = await fetch(imageUrl);
+        if (!res.ok) {
+          throw new Error(`Sample fetch returned HTTP ${res.status}`);
+        }
         const blob = await res.blob();
+        if (blob.type.includes('json') || blob.type.includes('html')) {
+          throw new Error(`Invalid sample mime-type: ${blob.type}`);
+        }
         const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
         processFile(file);
         return;
