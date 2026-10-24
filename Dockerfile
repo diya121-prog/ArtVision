@@ -5,6 +5,7 @@ WORKDIR /app/frontend
 COPY artvision/frontend/package*.json ./
 RUN npm install
 COPY artvision/frontend ./
+ENV VITE_API_URL=""
 RUN npm run build
 
 # Stage 2: Python Machine Learning Backend

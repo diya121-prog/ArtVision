@@ -1,3 +1,13 @@
+---
+title: ArtVision
+emoji: 🎨
+colorFrom: indigo
+colorTo: pink
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # ArtVision 🎨🔍
 
 > **An Explainable Multi-Task Deep Learning Framework for Comprehensive Artwork Analysis**
