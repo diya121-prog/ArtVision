@@ -239,8 +239,40 @@ async def similar_endpoint(
     }
 
 
-# Mount built React frontend SPA if dist folder exists
+# Root route with graceful fallback
+from fastapi.responses import HTMLResponse
+
+@app.get("/", response_class=HTMLResponse, summary="ArtVision API Index")
+def root_index():
+    frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
+    index_file = os.path.join(frontend_dist, "index.html")
+    if os.path.exists(index_file):
+        with open(index_file, "r") as f:
+            return HTMLResponse(content=f.read())
+    return HTMLResponse(content="""
+    <!DOCTYPE html>
+    <html>
+    <head><title>ArtVision API</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+    <body style="font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #1e293b;">
+        <h1 style="color: #4f46e5;">🎨 ArtVision Multi-Task API</h1>
+        <p>Operational backend for deep artwork analysis, authenticity detection, and Grad-CAM interpretability.</p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 20px 0;">
+            <p style="margin: 0 0 10px 0;"><b>Quick Links:</b></p>
+            <ul>
+                <li>📖 <b>Interactive API Documentation:</b> <a href="/docs">/docs (Swagger UI)</a></li>
+                <li>🩺 <b>Health & Diagnostics:</b> <a href="/health">/health</a></li>
+                <li>🚀 <b>Artwork Prediction:</b> <code>POST /predict</code></li>
+                <li>🔍 <b>Catalog Similarity:</b> <code>POST /similar</code></li>
+            </ul>
+        </div>
+        <p style="color: #64748b; font-size: 0.9rem;">To run the interactive Streamlit dashboard, set the Main file path in Streamlit Cloud to <code>app.py</code>.</p>
+    </body>
+    </html>
+    """)
+
+# Mount built React frontend static assets if dist folder exists
 frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
 if os.path.exists(frontend_dist):
-    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dist, "assets")), name="frontend-assets")
+
 
