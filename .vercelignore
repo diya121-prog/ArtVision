@@ -1,0 +1,16 @@
+# Ignore Python environment, source, and dependencies from Vercel Lambda bundling
+artvision/api/
+artvision/src/
+artvision/runs/
+artvision/scripts/
+artvision/tests/
+artvision/notebooks/
+artvision/configs/
+artvision/requirements.txt
+artvision/predict.py
+artvision/inspect_kaggle.py
+artvision/verify_install.py
+artvision/data/
+artvision/venv/
+showcase/
+predict.py

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "installCommand": "cd artvision/frontend && npm install",
+  "buildCommand": "cd artvision/frontend && npm run build",
+  "outputDirectory": "artvision/frontend/dist"
+}
