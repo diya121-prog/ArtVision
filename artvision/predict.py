@@ -29,11 +29,16 @@ def get_shared_multitask_model(ckpt_path: str, device):
     if not os.path.exists(ckpt_path):
         raise FileNotFoundError(f"Checkpoint not found at: {ckpt_path}")
     ckpt = torch.load(ckpt_path, map_location="cpu")
-    config = ckpt["config"]
+    config = ckpt["config"].copy()
+    if "model" in config:
+        config["model"]["pretrained"] = False
+        config["model"]["pretrained_checkpoint"] = None
     m = MultiTaskModel(config)
     m.load_state_dict(ckpt["model_state_dict"])
     m.to(device)
     m.eval()
+    for p in m.parameters():
+        p.requires_grad = False
     meta = {
         "config": config,
         "style_classes": ckpt.get("style_classes", []),
@@ -151,7 +156,7 @@ def predict_artwork(
     image = Image.open(image_path).convert("RGB")
     tensor = transform(image).unsqueeze(0).to(device)
 
-    with torch.no_grad():
+    with torch.inference_mode():
         outputs = model(tensor)
 
     result = {}

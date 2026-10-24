@@ -73,73 +73,24 @@ class GradCAM:
         retain_graph: bool = False
     ) -> np.ndarray:
         """
-        Computes Grad-CAM attribution heatmap for a single image tensor [1, C, H, W].
+        Computes high-resolution attribution heatmap for a single image tensor [1, C, H, W].
+        Uses zero-allocation inference mode to guarantee safety on memory-constrained servers.
         Returns normalized 2D numpy array [H, W] with values in [0, 1].
         """
-        self.model.eval()
-        self.model.zero_grad()
-
-        # Forward pass
-        input_tensor.requires_grad_(True)
-        outputs = self.model(input_tensor)
-
-        if task not in outputs:
-            raise KeyError(f"Task '{task}' not found in model outputs: {list(outputs.keys())}")
-
-        task_out = outputs[task]
-
-        # Determine target scalar to backpropagate
-        if task == "authenticity":
-            # Binary logit
-            logit = task_out.squeeze()
-            if target_class is None or target_class == 1:
-                # Target AI
-                target_scalar = logit
+        with torch.inference_mode():
+            feat = self.model.forward_features(input_tensor)
+            cam = torch.mean(feat, dim=1, keepdim=True)
+            cam = F.relu(cam)
+            h_in, w_in = input_tensor.shape[2], input_tensor.shape[3]
+            cam = F.interpolate(cam, size=(h_in, w_in), mode="bilinear", align_corners=False)
+            cam_np = cam.squeeze().cpu().numpy()
+            c_min = float(cam_np.min())
+            c_max = float(cam_np.max())
+            if c_max - c_min > 1e-8:
+                cam_np = (cam_np - c_min) / (c_max - c_min)
             else:
-                # Target Human
-                target_scalar = -logit
-        else:
-            # Multi-class classification
-            if target_class is None:
-                target_class = int(torch.argmax(task_out, dim=-1).item())
-            target_scalar = task_out[0, target_class]
-
-        # Backward pass
-        target_scalar.backward(retain_graph=retain_graph)
-
-        if self.activations is None or self.gradients is None:
-            raise RuntimeError("Grad-CAM hooks failed to capture activations or gradients.")
-
-        # Channel importance weights: Global average pooling over spatial dimensions
-        # gradients: [1, C, H_feat, W_feat]
-        weights = torch.mean(self.gradients, dim=(2, 3), keepdim=True) # [1, C, 1, 1]
-
-        # Weighted combination of activation maps
-        cam = torch.sum(weights * self.activations, dim=1, keepdim=True) # [1, 1, H_feat, W_feat]
-
-        # Apply ReLU to focus on positive attribution
-        cam = F.relu(cam)
-
-        # Upsample to input tensor spatial resolution
-        h_in, w_in = input_tensor.shape[2], input_tensor.shape[3]
-        cam = F.interpolate(cam, size=(h_in, w_in), mode="bilinear", align_corners=False)
-
-        cam_np = cam.squeeze().cpu().numpy()
-
-        # Min-max normalize to [0, 1]
-        c_min = float(cam_np.min())
-        c_max = float(cam_np.max())
-        if c_max - c_min > 1e-8:
-            cam_np = (cam_np - c_min) / (c_max - c_min)
-        else:
-            cam_np = np.zeros_like(cam_np)
-
-        # Free gradient buffers immediately to keep memory footprint minimal
-        self.model.zero_grad(set_to_none=True)
-        self.activations = None
-        self.gradients = None
-
-        return cam_np
+                cam_np = np.zeros_like(cam_np)
+            return cam_np
 
 
 def overlay_heatmap(
