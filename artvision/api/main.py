@@ -242,33 +242,314 @@ async def similar_endpoint(
 # Root route with graceful fallback
 from fastapi.responses import HTMLResponse
 
-@app.get("/", response_class=HTMLResponse, summary="ArtVision API Index")
+@app.get("/", response_class=HTMLResponse, summary="ArtVision Interactive Dashboard")
 def root_index():
     frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
     index_file = os.path.join(frontend_dist, "index.html")
     if os.path.exists(index_file):
         with open(index_file, "r") as f:
             return HTMLResponse(content=f.read())
-    return HTMLResponse(content="""
-    <!DOCTYPE html>
-    <html>
-    <head><title>ArtVision API</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-    <body style="font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #1e293b;">
-        <h1 style="color: #4f46e5;">🎨 ArtVision Multi-Task API</h1>
-        <p>Operational backend for deep artwork analysis, authenticity detection, and Grad-CAM interpretability.</p>
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 20px 0;">
-            <p style="margin: 0 0 10px 0;"><b>Quick Links:</b></p>
-            <ul>
-                <li>📖 <b>Interactive API Documentation:</b> <a href="/docs">/docs (Swagger UI)</a></li>
-                <li>🩺 <b>Health & Diagnostics:</b> <a href="/health">/health</a></li>
-                <li>🚀 <b>Artwork Prediction:</b> <code>POST /predict</code></li>
-                <li>🔍 <b>Catalog Similarity:</b> <code>POST /similar</code></li>
-            </ul>
+            
+    # Standalone interactive dashboard when frontend/dist is not bundled
+    return HTMLResponse(content="""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtVision | Artwork Analysis & Authentication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --bg: #0b0f19;
+      --card-bg: #131b2e;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 2rem 1rem; line-height: 1.5; min-height: 100vh; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 2.5rem; }
+    .badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    h1 { font-size: 2.6rem; font-weight: 800; background: linear-gradient(135deg, #a5b4fc 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    p.sub { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2rem; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); }
+    .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .upload-zone { border: 2px dashed #334155; border-radius: 12px; padding: 2.5rem 1rem; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(15, 23, 42, 0.5); }
+    .upload-zone:hover, .upload-zone.dragover { border-color: var(--primary); background: rgba(99, 102, 241, 0.05); }
+    .upload-zone input { display: none; }
+    .preview-box { margin-top: 1rem; border-radius: 10px; overflow: hidden; display: none; max-height: 320px; text-align: center; background: #000; }
+    .preview-box img { max-width: 100%; max-height: 320px; object-fit: contain; }
+    .btn { display: block; width: 100%; padding: 0.85rem; border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.2s; background: var(--primary); color: white; margin-top: 1.25rem; }
+    .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .select-group { margin-top: 1rem; }
+    .select-group label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 600; }
+    select { width: 100%; padding: 0.65rem; border-radius: 8px; background: #0f172a; border: 1px solid var(--border); color: var(--text); outline: none; }
+    .result-section { display: none; }
+    .auth-banner { padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+    .auth-human { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; }
+    .auth-ai { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; }
+    .res-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+    .stat-card { background: #0f172a; padding: 1rem; border-radius: 10px; border: 1px solid var(--border); }
+    .stat-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em; }
+    .stat-value { font-size: 1.25rem; font-weight: 700; margin-top: 0.25rem; color: #fff; }
+    .palette-row { display: flex; gap: 8px; margin: 1rem 0; }
+    .swatch { flex: 1; height: 50px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); position: relative; }
+    .cam-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1rem; }
+    .cam-img-wrap { border-radius: 8px; overflow: hidden; background: #000; text-align: center; }
+    .cam-img-wrap img { width: 100%; height: 180px; object-fit: contain; }
+    .cam-img-wrap p { font-size: 0.75rem; color: var(--text-muted); padding: 0.35rem 0; }
+    .spinner { display: none; text-align: center; padding: 3rem 1rem; }
+    .loading-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); margin: 0 4px; animation: bounce 0.6s infinite alternate; }
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce { to { opacity: 0.3; transform: translateY(-8px); } }
+    footer { text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+    footer a { color: #818cf8; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Multi-Task Deep Learning</span>
+      <h1>ArtVision</h1>
+      <p class="sub">Explainable neural analysis, authenticity verification (Human vs AI), color theory extraction, and Grad-CAM interpretability.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Left Column: Input -->
+      <div class="card">
+        <div class="card-title"><span>🎨</span> Select Artwork</div>
+        <div class="upload-zone" id="dropZone">
+          <p style="font-size: 2.2rem; margin-bottom: 0.5rem;">🖼️</p>
+          <p style="font-weight: 600; margin-bottom: 0.25rem;">Click or drag artwork here</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Supports JPEG, PNG, WebP (up to 15MB)</p>
+          <input type="file" id="fileInput" accept="image/*">
         </div>
-        <p style="color: #64748b; font-size: 0.9rem;">To run the interactive Streamlit dashboard, set the Main file path in Streamlit Cloud to <code>app.py</code>.</p>
-    </body>
-    </html>
-    """)
+
+        <div class="preview-box" id="previewBox">
+          <img id="previewImg" src="" alt="Preview">
+        </div>
+
+        <div class="select-group">
+          <label for="explainTask">Grad-CAM Heatmap Target:</label>
+          <select id="explainTask">
+            <option value="style" selected>Style Classification Head</option>
+            <option value="authenticity">Authenticity Head (Human vs AI)</option>
+            <option value="artist">Artist Attribution Head</option>
+            <option value="genre">Genre / Subject Head</option>
+            <option value="mood">Affective Mood Head</option>
+          </select>
+        </div>
+
+        <button class="btn" id="analyzeBtn" disabled>🚀 Run Multi-Task Analysis</button>
+      </div>
+
+      <!-- Right Column: Results -->
+      <div class="card">
+        <div class="card-title"><span>📊</span> Neural Attribution Results</div>
+
+        <div class="spinner" id="loadingSpinner">
+          <div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div>
+          <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">Executing calibrated inference & generating Grad-CAM heatmaps...</p>
+        </div>
+
+        <div id="placeholder" style="text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+          <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</p>
+          <p>Upload an artwork on the left to inspect its art movement, painter attribution, authenticity, and visual heatmaps.</p>
+        </div>
+
+        <div class="result-section" id="resultsSection">
+          <div class="auth-banner" id="authBanner">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase;" id="authTag">Authenticity</div>
+              <div style="font-size: 1.25rem; font-weight: 800;" id="authVerdict">Human Made Masterwork</div>
+            </div>
+            <div style="font-size: 1.3rem; font-weight: 800;" id="authScore">98.5%</div>
+          </div>
+
+          <div class="res-grid">
+            <div class="stat-card">
+              <div class="stat-label">Style & Era</div>
+              <div class="stat-value" id="styleVal">-</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;" id="movementVal">-</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Artist Attribution</div>
+              <div class="stat-value" id="artistVal">-</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;" id="artistConf">-</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Genre / Subject</div>
+              <div class="stat-value" id="genreVal">-</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;" id="genreConf">-</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Color & Tone</div>
+              <div class="stat-value" id="colorTemp">-</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;" id="colorTone">-</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <div class="stat-label">CIELAB Dominant Swatches</div>
+            <div class="palette-row" id="paletteRow"></div>
+          </div>
+
+          <div id="camSection" style="display: none;">
+            <div class="stat-label">Grad-CAM Interpretability Overlay</div>
+            <div class="cam-box">
+              <div class="cam-img-wrap">
+                <img id="camOriginal" src="" alt="Original">
+                <p>Input Artwork</p>
+              </div>
+              <div class="cam-img-wrap">
+                <img id="camOverlay" src="" alt="Grad-CAM Overlay">
+                <p id="camCaption">Heatmap Overlay</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>ArtVision Framework • PDEU ML Project • <a href="/docs">Interactive API Docs (Swagger)</a> • <a href="/health">System Health</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const previewBox = document.getElementById('previewBox');
+    const previewImg = document.getElementById('previewImg');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const placeholder = document.getElementById('placeholder');
+    const resultsSection = document.getElementById('resultsSection');
+    let selectedFile = null;
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) handleFile(fileInput.files[0]);
+    });
+
+    function handleFile(file) {
+      selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        previewImg.src = e.target.result;
+        previewBox.style.display = 'block';
+        analyzeBtn.disabled = false;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    analyzeBtn.addEventListener('click', async () => {
+      if (!selectedFile) return;
+
+      placeholder.style.display = 'none';
+      resultsSection.style.display = 'none';
+      loadingSpinner.style.display = 'block';
+      analyzeBtn.disabled = true;
+
+      const explainTask = document.getElementById('explainTask').value;
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      try {
+        const response = await fetch(`/predict?explain=true&explain_task=${explainTask}`, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) throw new Error('API Error: ' + response.statusText);
+        const data = await response.json();
+
+        // Render Results
+        loadingSpinner.style.display = 'none';
+        resultsSection.style.display = 'block';
+
+        // Authenticity
+        const auth = data.authenticity || {};
+        const isAi = auth.is_ai_generated;
+        const banner = document.getElementById('authBanner');
+        banner.className = 'auth-banner ' + (isAi ? 'auth-ai' : 'auth-human');
+        document.getElementById('authVerdict').textContent = isAi ? '⚠️ Synthetic (AI-Generated)' : '✅ Human-Made Artwork';
+        document.getElementById('authScore').textContent = Math.round((auth.confidence || 0) * 100) + '%';
+
+        // Style & Movement
+        const style = data.style || {};
+        document.getElementById('styleVal').textContent = style.prediction || 'Unknown';
+        document.getElementById('movementVal').textContent = (data.movement && data.movement.prediction) ? ('Movement: ' + data.movement.prediction) : ('Confidence: ' + Math.round((style.confidence || 0)*100) + '%');
+
+        // Artist
+        const artist = data.artist || {};
+        document.getElementById('artistVal').textContent = artist.prediction || 'Unknown';
+        document.getElementById('artistConf').textContent = 'Confidence: ' + Math.round((artist.confidence || 0)*100) + '%';
+
+        // Genre
+        const genre = data.genre || {};
+        document.getElementById('genreVal').textContent = genre.prediction || 'General';
+        document.getElementById('genreConf').textContent = 'Confidence: ' + Math.round((genre.confidence || 0)*100) + '%';
+
+        // Color
+        const color = data.color || {};
+        document.getElementById('colorTemp').textContent = (color.temperature || 'Balanced').toUpperCase();
+        document.getElementById('colorTone').textContent = (color.brightness || 'mid') + ' brightness, ' + (color.saturation || 'balanced');
+
+        // Palette Swatches
+        const pRow = document.getElementById('paletteRow');
+        pRow.innerHTML = '';
+        if (color.palette) {
+          color.palette.forEach(p => {
+            const swatch = document.createElement('div');
+            swatch.className = 'swatch';
+            swatch.style.backgroundColor = p.hex;
+            swatch.title = p.hex + ' (' + Math.round(p.percent * 100) + '%)';
+            pRow.appendChild(swatch);
+          });
+        }
+
+        // Grad-CAM Heatmap
+        const expl = data.explanation;
+        if (expl && expl.overlay_url) {
+          document.getElementById('camSection').style.display = 'block';
+          document.getElementById('camOriginal').src = previewImg.src;
+          document.getElementById('camOverlay').src = expl.overlay_url;
+          document.getElementById('camCaption').textContent = (expl.target_prediction || explainTask) + ' Attribution';
+        } else {
+          document.getElementById('camSection').style.display = 'none';
+        }
+
+      } catch (err) {
+        loadingSpinner.style.display = 'none';
+        placeholder.style.display = 'block';
+        alert('Analysis error: ' + err.message);
+      } finally {
+        analyzeBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
+""")
 
 # Mount built React frontend static assets if dist folder exists
 frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
