@@ -38,8 +38,13 @@ export function isMockMode(): boolean {
  * Gets the backend API base URL from env or default http://localhost:8000
  */
 export function getApiBaseUrl(): string {
-  const url = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-  return url.replace(/\/+$/, '');
+  if (import.meta.env.VITE_API_URL !== undefined && import.meta.env.VITE_API_URL !== '') {
+    return import.meta.env.VITE_API_URL.replace(/\/+$/, '');
+  }
+  if (typeof window !== 'undefined' && window.location.port === '5173') {
+    return 'http://localhost:8000';
+  }
+  return '';
 }
 
 /**

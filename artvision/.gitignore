@@ -14,11 +14,13 @@ data/processed/
 *_backup.csv
 
 # Large binaries & checkpoints
-*.npy
 *.pt
-*.pth
 *.h5
 *.onnx
+
+# Allow production inference checkpoint and retrieval index
+!runs/multitask_model/best_model.pth
+!runs/retrieval/embeddings.npy
 
 # Ephemeral uploads in explain
 runs/explain/upload_*

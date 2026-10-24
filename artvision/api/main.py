@@ -233,3 +233,10 @@ async def similar_endpoint(
         "count": len(results),
         "results": results
     }
+
+
+# Mount built React frontend SPA if dist folder exists
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
+if os.path.exists(frontend_dist):
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+
