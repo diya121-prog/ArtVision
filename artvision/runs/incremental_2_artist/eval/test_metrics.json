@@ -1,0 +1,24 @@
+{
+    "style": {
+        "num_samples": 203,
+        "accuracy": 0.5320197044334976,
+        "top3_accuracy": 0.7931034482758621,
+        "macro_f1": 0.5305593258695974,
+        "ece_uncalibrated": 0.13528955687443026,
+        "ece_calibrated": 0.07989922041082617,
+        "temperature": 1.4403705596923828
+    },
+    "derived_movement": {
+        "accuracy": 0.7586206896551724,
+        "num_samples": 203
+    },
+    "artist": {
+        "num_samples": 3,
+        "accuracy": 0.6666666666666666,
+        "top3_accuracy": 1.0,
+        "macro_f1": 0.5555555555555555,
+        "ece_uncalibrated": 0.4196297824382782,
+        "ece_calibrated": 0.43619753917058307,
+        "temperature": 1.500024676322937
+    }
+}

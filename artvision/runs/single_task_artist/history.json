@@ -1,0 +1,189 @@
+[
+    {
+        "stage": 1,
+        "epoch": 1,
+        "train_loss": 0.035938094258044825,
+        "task_losses": {
+            "artist": 0.09174056509086853
+        },
+        "weights": {
+            "artist": 1.0201662317761835
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.10487807648522514
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 2,
+        "train_loss": -0.03671131247900567,
+        "task_losses": {
+            "artist": 0.0011493220851473281
+        },
+        "weights": {
+            "artist": 1.0776443796337776
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.11183785540716988
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 3,
+        "train_loss": -0.06418654512403146,
+        "task_losses": {
+            "artist": 0.0004964878122027929
+        },
+        "weights": {
+            "artist": 1.137759120959156
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.09782853296824864
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 4,
+        "train_loss": -0.09107399085220301,
+        "task_losses": {
+            "artist": 0.00046190407638792784
+        },
+        "weights": {
+            "artist": 1.2006023829838015
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.1117495128086635
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 5,
+        "train_loss": -0.11789431563525829,
+        "task_losses": {
+            "artist": 0.0003271002403020042
+        },
+        "weights": {
+            "artist": 1.2665805906619665
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.11045082977839879
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 1,
+        "train_loss": -0.13813920122272563,
+        "task_losses": {
+            "artist": 6.362134170768634e-05
+        },
+        "weights": {
+            "artist": 1.3183627735893682
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.12037825584411621
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 2,
+        "train_loss": -0.15132145752322,
+        "task_losses": {
+            "artist": 1.497136213174063e-06
+        },
+        "weights": {
+            "artist": 1.3534723295355744
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.11660933494567871
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 3,
+        "train_loss": -0.16417662293281196,
+        "task_losses": {
+            "artist": 1.6862984142804027e-06
+        },
+        "weights": {
+            "artist": 1.3887196149466172
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.11152752808162145
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 4,
+        "train_loss": -0.17647145323033603,
+        "task_losses": {
+            "artist": 2.7528656317518085e-06
+        },
+        "weights": {
+            "artist": 1.4232892945127666
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.13033035823277064
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 5,
+        "train_loss": -0.18796086592494315,
+        "task_losses": {
+            "artist": 1.0108565895450283e-06
+        },
+        "weights": {
+            "artist": 1.4563647418651942
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.16075406755719865
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 6,
+        "train_loss": -0.19842908882869864,
+        "task_losses": {
+            "artist": 5.307933361940664e-07
+        },
+        "weights": {
+            "artist": 1.4871704578399658
+        },
+        "val_metrics": {
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "mean_macro_f1": 0.5555555555555555,
+            "val_loss": 0.16337009838649205
+        }
+    }
+]

@@ -1,0 +1,37 @@
+palette:
+  k_clusters: 5                 # Default number of dominant colors to extract
+  max_side: 180                 # Downscale longest side in pixels (speed target < 300 ms on CPU)
+  n_init: 5                     # Explicit K-Means initializations
+  seed: 42                      # Deterministic random seed
+  merge_delta_e_threshold: 12.0 # CIELAB distance threshold to merge near-duplicate clusters
+
+temperature:
+  # Hue ranges in degrees [0, 360]
+  warm_hue_ranges:
+    - [0, 65]                   # Red, orange, yellow, warm yellow-green
+    - [330, 360]                # Crimson, magenta-red
+  cool_hue_ranges:
+    - [140, 270]                # Cyan, sky blue, pure blue, cool violet
+  
+  # Filtering & Weighting
+  min_saturation_threshold: 0.15 # Colors with saturation < 0.15 ignored in temperature votes
+  min_chroma_threshold: 12.0    # CIELAB chroma sqrt(a^2 + b^2) < 12.0 considered near-neutral
+  
+  # Classification Decisions
+  monochrome_max_saturation: 0.14              # Overall mean saturation < 0.14 -> monochrome
+  monochrome_narrow_band_max_saturation: 0.28  # Narrow hue band only classifies as monochrome if saturation <= 0.28 (sepia/duotone)
+  monochrome_hue_concentration: 0.85           # > 85% chromatic mass within a narrow hue window (<= 25 deg)
+  dominant_ratio_threshold: 0.60     # warm_score >= 0.60 -> warm, cool_score >= 0.60 -> cool
+  ratio_margin: 1.4                  # Dominant score must exceed 1.4x opposing score
+
+tone:
+  brightness_thresholds:
+    dark: 0.35                  # Weighted Lightness L < 0.35 (L* < 35 in LAB)
+    light: 0.65                 # Weighted Lightness L > 0.65 (L* > 65 in LAB)
+  saturation_thresholds:
+    muted: 0.25                 # Weighted Saturation S < 0.25
+    vivid: 0.55                 # Weighted Saturation S > 0.55
+  pastel:
+    min_lightness: 0.65         # High brightness
+    min_saturation: 0.12        # Non-neutral (has subtle color)
+    max_saturation: 0.45        # Not fully saturated/vivid

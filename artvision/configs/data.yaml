@@ -1,0 +1,16 @@
+dataset:
+  wikiart:
+    name: "huggan/wikiart"
+    max_samples: 3000
+    seed: 42
+  ai_artbench:
+    path: "data/raw/real-ai-art/Real_AI_SD_LD_Dataset"
+    max_samples: 2000
+    human_ratio: 0.5
+    seed: 42
+
+processing:
+  image_max_side: 384
+  jpeg_quality: 90
+  cache_dir: "data/processed/images"
+  metadata_file: "data/processed/metadata.csv"

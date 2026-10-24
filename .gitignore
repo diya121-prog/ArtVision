@@ -1,0 +1,104 @@
+# ==========================================
+# ArtVision - Git Ignore Rules
+# ==========================================
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archives & Large Bundles
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+artvision.zip
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+artvision/venv/
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+eggs/
+.eggs/
+parts/
+var/
+sdist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter & Editor Files
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+.jupyter/
+*.db
+*.sqlite
+*.sqlite3
+
+# Datasets (Large Media Files)
+data/
+artvision/data/
+*.csv_backup*
+*_backup.csv
+artvision/data/processed/metadata_backup*.csv
+artvision/data/processed/staging_new_rows.csv
+
+# Keep metadata.csv if desired, or ignore data folder entirely
+# Note: Raw and processed images (11+ GB) MUST NOT be pushed to GitHub
+
+# Model Weights, Checkpoints & Embeddings
+*.pth
+*.pt
+*.h5
+*.hdf5
+*.ckpt
+*.onnx
+*.npy
+artvision/runs/**/*.pth
+artvision/runs/**/*.npy
+
+# Ephemeral Run Artifacts
+artvision/runs/temp/
+artvision/runs/explain/upload_*
+showcase/.matplotlib/
+
+# Node & Frontend Build Artifacts
+node_modules/
+artvision/frontend/node_modules/
+frontend/node_modules/
+dist/
+artvision/frontend/dist/
+frontend/dist/
+.npm
+.eslintcache
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.env
+notebook_secret
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace

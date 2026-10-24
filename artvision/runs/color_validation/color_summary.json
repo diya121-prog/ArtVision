@@ -1,0 +1,267 @@
+{
+    "benchmark": {
+        "n_samples": 50,
+        "mean_ms": 53.66,
+        "median_ms": 53.31,
+        "min_ms": 36.88,
+        "max_ms": 76.1,
+        "p95_ms": 68.57
+    },
+    "questionable_cases": [
+        {
+            "image_id": "ai_artbench_3-244701808-575877",
+            "style": "Impressionism",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.3741,
+            "cool_score": 0.375,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        },
+        {
+            "image_id": "ai_artbench_henri-matisse_dishes-and-fruit-on-a-red-and-black-carpet-1901",
+            "style": "Post_Impressionism",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.4531,
+            "cool_score": 0.5469,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        },
+        {
+            "image_id": "ai_artbench_4-70881344-25488",
+            "style": "Post_Impressionism",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.3859,
+            "cool_score": 0.4145,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        },
+        {
+            "image_id": "ai_artbench_2-90683141-659328",
+            "style": "Expressionism",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.4649,
+            "cool_score": 0.3817,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        },
+        {
+            "image_id": "ai_artbench_2-16537419-73014",
+            "style": "Expressionism",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.39,
+            "cool_score": 0.3771,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        },
+        {
+            "image_id": "ai_artbench_2-347857744-512485",
+            "style": "Expressionism",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.4985,
+            "cool_score": 0.3687,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        },
+        {
+            "image_id": "ai_artbench_5-940247006-650857",
+            "style": "Realism",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.4684,
+            "cool_score": 0.4034,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        },
+        {
+            "image_id": "ai_artbench_0-707151793-164108",
+            "style": "Art_Nouveau",
+            "temperature": "neutral-mixed",
+            "warm_score": 0.5108,
+            "cool_score": 0.4892,
+            "reason": "Borderline balance between warm and cool tones (difference < 0.15)"
+        }
+    ],
+    "style_eda": [
+        {
+            "style": "Magic Realism",
+            "mean_warm": 1.0,
+            "mean_cool": 0.0,
+            "mean_lightness": 1.5743882352941176,
+            "count": 1
+        },
+        {
+            "style": "High Renaissance",
+            "mean_warm": 0.954475,
+            "mean_cool": 0.0,
+            "mean_lightness": 1.9815529411764705,
+            "count": 4
+        },
+        {
+            "style": "Baroque",
+            "mean_warm": 0.925852,
+            "mean_cool": 0.022628,
+            "mean_lightness": 1.9546517647058823,
+            "count": 25
+        },
+        {
+            "style": "High_Renaissance",
+            "mean_warm": 0.875088,
+            "mean_cool": 0.038612,
+            "mean_lightness": 2.1265992156862747,
+            "count": 25
+        },
+        {
+            "style": "Post-Impressionism",
+            "mean_warm": 0.8722,
+            "mean_cool": 0.06711249999999999,
+            "mean_lightness": 2.445147058823529,
+            "count": 8
+        },
+        {
+            "style": "Abstract Art",
+            "mean_warm": 0.8708,
+            "mean_cool": 0.1292,
+            "mean_lightness": 1.9597313725490193,
+            "count": 2
+        },
+        {
+            "style": "Romanticism",
+            "mean_warm": 0.760224,
+            "mean_cool": 0.033452,
+            "mean_lightness": 2.120854431372549,
+            "count": 25
+        },
+        {
+            "style": "Neoclassicism",
+            "mean_warm": 0.75,
+            "mean_cool": 0.0,
+            "mean_lightness": 2.0205892156862744,
+            "count": 4
+        },
+        {
+            "style": "Rococo",
+            "mean_warm": 0.75,
+            "mean_cool": 0.0,
+            "mean_lightness": 1.7230411764705882,
+            "count": 4
+        },
+        {
+            "style": "Cubism",
+            "mean_warm": 0.7388,
+            "mean_cool": 0.059685714285714286,
+            "mean_lightness": 2.3041882352941174,
+            "count": 7
+        },
+        {
+            "style": "Art_Nouveau",
+            "mean_warm": 0.6768559999999999,
+            "mean_cool": 0.187024,
+            "mean_lightness": 2.3294988235294114,
+            "count": 25
+        },
+        {
+            "style": "Post_Impressionism",
+            "mean_warm": 0.624748,
+            "mean_cool": 0.19270400000000001,
+            "mean_lightness": 2.2956415686274507,
+            "count": 25
+        },
+        {
+            "style": "Ukiyo_e",
+            "mean_warm": 0.575116,
+            "mean_cool": 0.257972,
+            "mean_lightness": 2.339666196078431,
+            "count": 25
+        },
+        {
+            "style": "Realism",
+            "mean_warm": 0.57332,
+            "mean_cool": 0.139696,
+            "mean_lightness": 2.259663529411765,
+            "count": 25
+        },
+        {
+            "style": "Surrealism",
+            "mean_warm": 0.57082,
+            "mean_cool": 0.02918,
+            "mean_lightness": 1.9652290196078432,
+            "count": 5
+        },
+        {
+            "style": "Symbolism",
+            "mean_warm": 0.5592159999999999,
+            "mean_cool": 0.292896,
+            "mean_lightness": 2.047971294117647,
+            "count": 25
+        },
+        {
+            "style": "Expressionism",
+            "mean_warm": 0.503944,
+            "mean_cool": 0.32807600000000003,
+            "mean_lightness": 2.233469647058824,
+            "count": 25
+        },
+        {
+            "style": "Neo-Expressionism",
+            "mean_warm": 0.4742625,
+            "mean_cool": 0.1119125,
+            "mean_lightness": 2.147381862745098,
+            "count": 8
+        },
+        {
+            "style": "Minimalism",
+            "mean_warm": 0.4554,
+            "mean_cool": 0.2,
+            "mean_lightness": 1.7535819607843137,
+            "count": 5
+        },
+        {
+            "style": "Impressionism",
+            "mean_warm": 0.438212,
+            "mean_cool": 0.252284,
+            "mean_lightness": 2.382749960784314,
+            "count": 25
+        },
+        {
+            "style": "Abstract Expressionism",
+            "mean_warm": 0.4,
+            "mean_cool": 0.0,
+            "mean_lightness": 2.266336470588235,
+            "count": 5
+        },
+        {
+            "style": "Lyrical Abstraction",
+            "mean_warm": 0.30485,
+            "mean_cool": 0.0,
+            "mean_lightness": 2.2075156862745096,
+            "count": 2
+        },
+        {
+            "style": "Early Renaissance",
+            "mean_warm": 0.24396666666666667,
+            "mean_cool": 0.08936666666666666,
+            "mean_lightness": 2.1921267973856207,
+            "count": 3
+        },
+        {
+            "style": "Art Informel",
+            "mean_warm": 0.15968,
+            "mean_cool": 0.04032,
+            "mean_lightness": 2.5240619607843136,
+            "count": 5
+        },
+        {
+            "style": "Color Field Painting",
+            "mean_warm": 0.037366666666666666,
+            "mean_cool": 0.6107,
+            "mean_lightness": 1.9687633986928104,
+            "count": 3
+        },
+        {
+            "style": "Pop Art",
+            "mean_warm": 0.028466666666666668,
+            "mean_cool": 0.3048666666666667,
+            "mean_lightness": 2.316299346405229,
+            "count": 3
+        },
+        {
+            "style": "Northern Renaissance",
+            "mean_warm": 0.0,
+            "mean_cool": 0.0,
+            "mean_lightness": 2.5977137254901956,
+            "count": 2
+        }
+    ]
+}

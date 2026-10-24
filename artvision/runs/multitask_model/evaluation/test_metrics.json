@@ -1,0 +1,60 @@
+{
+    "style": {
+        "num_samples": 811,
+        "accuracy": 0.5992601726263872,
+        "top3_accuracy": 0.842170160295931,
+        "macro_f1": 0.4339097218081787,
+        "ece_uncalibrated": 0.055113346762633665,
+        "ece_calibrated": 0.044197146570638446,
+        "temperature": 1.252237319946289
+    },
+    "derived_movement": {
+        "accuracy": 0.720098643649815,
+        "num_samples": 811
+    },
+    "artist": {
+        "num_samples": 598,
+        "accuracy": 0.6505016722408027,
+        "top3_accuracy": 0.8260869565217391,
+        "macro_f1": 0.6247958872962323,
+        "ece_uncalibrated": 0.0756805349253492,
+        "ece_calibrated": 0.043877315810292854,
+        "temperature": 1.3793609142303467
+    },
+    "genre": {
+        "num_samples": 520,
+        "accuracy": 0.6634615384615384,
+        "top3_accuracy": 0.9403846153846154,
+        "macro_f1": 0.5648871687451233,
+        "ece_uncalibrated": 0.08570949544127171,
+        "ece_calibrated": 0.06639938933344988,
+        "temperature": 1.4484238624572754
+    },
+    "mood": {
+        "num_samples": 14,
+        "accuracy": 0.21428571428571427,
+        "top3_accuracy": 0.7857142857142857,
+        "macro_f1": 0.11538461538461539,
+        "ece_uncalibrated": 0.18359406292438507,
+        "ece_calibrated": 0.13175573306424276,
+        "temperature": 1.7635339498519897,
+        "experimental": true,
+        "bootstrap_accuracy_95ci": [
+            0.0,
+            0.42857142857142855
+        ],
+        "bootstrap_macro_f1_95ci": [
+            0.0,
+            0.19444444444444445
+        ]
+    },
+    "authenticity": {
+        "num_samples": 816,
+        "accuracy": 0.9705882352941176,
+        "macro_f1": 0.9349455221897423,
+        "auroc": 0.9950558659217876,
+        "ece_uncalibrated": 0.009142672314363382,
+        "ece_calibrated": 0.01065266241922103,
+        "temperature": 1.1627202033996582
+    }
+}

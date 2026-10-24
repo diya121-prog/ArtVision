@@ -1,0 +1,37 @@
+# Environments
+venv/
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data
+data/raw/
+data/processed/
+*.csv_backup*
+*_backup.csv
+
+# Large binaries & checkpoints
+*.npy
+*.pt
+*.pth
+*.h5
+*.onnx
+
+# Ephemeral uploads in explain
+runs/explain/upload_*
+runs/temp/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Mac
+.DS_Store

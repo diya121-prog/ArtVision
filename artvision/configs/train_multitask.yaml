@@ -1,0 +1,79 @@
+data:
+  metadata_path: "data/processed/metadata.csv"
+  image_dir: "data/processed/images"
+  image_size: 224
+  batch_size: 32
+  num_workers: 0
+  train_split: "train"
+  val_split: "val"
+  test_split: "test"
+
+model:
+  backbone: "efficientnet_b0"
+  pretrained: true
+  pretrained_checkpoint: "runs/style_model/best_model.pth"
+  dropout: 0.2
+  hidden_dim: 256
+
+tasks:
+  style:
+    enabled: true
+    type: "classification"
+    num_classes: 27
+    weight: 1.0
+  artist:
+    enabled: true
+    type: "classification"
+    top_n: 30
+    min_samples: 40
+    weight: 1.0
+  genre:
+    enabled: true
+    type: "classification"
+    num_classes: 10
+    weight: 1.0
+  mood:
+    enabled: true
+    type: "classification"
+    num_classes: 5
+    loss_mode: "kl"  # 'kl' (soft distribution) or 'ce' (hard majority)
+    weight: 1.0
+    experimental: true
+  authenticity:
+    enabled: true
+    type: "binary"
+    num_classes: 1
+    weight: 1.0
+  era:
+    enabled: false  # Disabled placeholder
+    type: "classification"
+    num_classes: 10
+    weight: 1.0
+  technique:
+    enabled: false  # Disabled placeholder
+    type: "classification"
+    num_classes: 10
+    weight: 1.0
+
+loss_weighting:
+  method: "uncertainty"  # Options: 'equal', 'manual', 'uncertainty'
+
+sampler:
+  guarantee_minimums: true
+  min_samples_per_task:
+    style: 4
+    authenticity: 4
+    genre: 4
+    mood: 2
+    artist: 2
+
+training:
+  device: "mps"
+  seed: 42
+  lr_backbone: 1.0e-05
+  lr_head: 0.001
+  weight_decay: 0.01
+  epochs_stage1: 5
+  epochs_stage2: 15
+  early_stopping_patience: 5
+  output_dir: "runs/multitask_model"

@@ -1,0 +1,312 @@
+style_map:
+  # Map AI-ArtBench styles to WikiArt styles
+  art_nouveau: "Art_Nouveau"
+  baroque: "Baroque"
+  expressionism: "Expressionism"
+  impressionism: "Impressionism"
+  post_impressionism: "Post_Impressionism"
+  realism: "Realism"
+  renaissance: "High_Renaissance" # or Early_Renaissance? Let's use High_Renaissance as default
+  romanticism: "Romanticism"
+  surrealism: "Symbolism" # Wait, WikiArt has no Surrealism in the top 27? Let's check WikiArt styles.
+  ukiyo_e: "Ukiyo_e"
+  ukiyo-e: "Ukiyo_e"
+
+mood_map:
+  Calm / Content:
+    - neutral
+  Joyful / Excited:
+    - happiness
+    - optimism
+  Awe / Sublime:
+    - surprise
+    - gratitude
+    - love
+  Sad / Melancholic:
+    - sadness
+    - pessimism
+    - regret
+    - shame
+    - shyness
+  Tense / Dark:
+    - fear
+    - anger
+    - disgust
+    - arrogance
+    - disagreeableness
+
+movement_map:
+  # 1. Renaissance & Mannerism (14th - 16th c.)
+  Early_Renaissance: "Renaissance & Mannerism"
+  High_Renaissance: "Renaissance & Mannerism"
+  Mannerism_Late_Renaissance: "Renaissance & Mannerism"
+  Northern_Renaissance: "Renaissance & Mannerism"
+
+  # 2. Baroque & Rococo (17th - 18th c.)
+  Baroque: "Baroque & Rococo"
+  Rococo: "Baroque & Rococo"
+
+  # 3. 19th-Century Realism & Romanticism
+  Romanticism: "19th-Century Realism & Romanticism"
+  Realism: "19th-Century Realism & Romanticism"
+  Contemporary_Realism: "19th-Century Realism & Romanticism"
+  New_Realism: "19th-Century Realism & Romanticism"
+
+  # 4. Late 19th-Century Avant-Garde & Fin-de-Siècle
+  Impressionism: "Late 19th-Century Avant-Garde"
+  Post_Impressionism: "Late 19th-Century Avant-Garde"
+  Pointillism: "Late 19th-Century Avant-Garde"
+  Symbolism: "Late 19th-Century Avant-Garde"
+  Art_Nouveau: "Late 19th-Century Avant-Garde"
+
+  # 5. Early 20th-Century Modernism
+  Fauvism: "Early 20th-Century Modernism"
+  Expressionism: "Early 20th-Century Modernism"
+  Cubism: "Early 20th-Century Modernism"
+  Analytical_Cubism: "Early 20th-Century Modernism"
+  Synthetic_Cubism: "Early 20th-Century Modernism"
+  Art_Deco: "Early 20th-Century Modernism"
+  Naive_Art_Primitivism: "Early 20th-Century Modernism"
+
+  # 6. Post-War & Contemporary Art
+  Abstract_Expressionism: "Post-War & Contemporary Art"
+  Action_painting: "Post-War & Contemporary Art"
+  Color_Field_Painting: "Post-War & Contemporary Art"
+  Minimal_Art: "Post-War & Contemporary Art"
+  Minimalism: "Post-War & Contemporary Art"
+  Pop_Art: "Post-War & Contemporary Art"
+
+  # 7. Traditional East Asian Art
+  Ukiyo_e: "Traditional East Asian Art"
+
+style_aliases:
+  # Formatting & Source-specific Naming Differences
+  "Post-Impressionism": "Post_Impressionism"
+  "Abstract Expressionism": "Abstract_Expressionism"
+  "High Renaissance": "High_Renaissance"
+  "Pop Art": "Pop_Art"
+  "Color Field Painting": "Color_Field_Painting"
+  "Early Renaissance": "Early_Renaissance"
+  "Northern Renaissance": "Northern_Renaissance"
+  "ukiyo-e": "Ukiyo_e"
+  "Art_Nouveau_Modern": "Art_Nouveau"
+  # Sub-style merging (optional probabilistic collapsing)
+  "Analytical_Cubism": "Cubism"
+  "Synthetic_Cubism": "Cubism"
+  "Contemporary_Realism": "Realism"
+  "New_Realism": "Realism"
+  "Action_painting": "Abstract_Expressionism"
+  "Color_Field_Painting": "Abstract_Expressionism"
+
+coarse_movement_map:
+  # 1. Renaissance & Northern Traditions (14th - 16th c.)
+  Early_Renaissance: "Renaissance & Mannerism"
+  High_Renaissance: "Renaissance & Mannerism"
+  Mannerism_Late_Renaissance: "Renaissance & Mannerism"
+  Northern_Renaissance: "Renaissance & Mannerism"
+
+  # 2. Baroque & Rococo (17th - 18th c.)
+  Baroque: "Baroque & Rococo"
+  Rococo: "Baroque & Rococo"
+
+  # 3. 19th-Century Realism & Romanticism
+  Romanticism: "19th-Century Realism & Romanticism"
+  Realism: "19th-Century Realism & Romanticism"
+  Contemporary_Realism: "19th-Century Realism & Romanticism"
+  New_Realism: "19th-Century Realism & Romanticism"
+
+  # 4. Late 19th-Century Avant-Garde & Fin-de-Siècle
+  Impressionism: "Late 19th-Century Avant-Garde"
+  Post_Impressionism: "Late 19th-Century Avant-Garde"
+  Pointillism: "Late 19th-Century Avant-Garde"
+  Symbolism: "Late 19th-Century Avant-Garde"
+  Art_Nouveau: "Late 19th-Century Avant-Garde"
+
+  # 5. Early 20th-Century Modernism & Expressionism
+  Fauvism: "Early 20th-Century Modernism"
+  Expressionism: "Early 20th-Century Modernism"
+  Cubism: "Early 20th-Century Modernism"
+  Analytical_Cubism: "Early 20th-Century Modernism"
+  Synthetic_Cubism: "Early 20th-Century Modernism"
+  Art_Deco: "Early 20th-Century Modernism"
+  Naive_Art_Primitivism: "Early 20th-Century Modernism"
+
+  # 6. Post-War & Contemporary Art
+  Abstract_Expressionism: "Post-War & Contemporary Art"
+  Action_painting: "Post-War & Contemporary Art"
+  Color_Field_Painting: "Post-War & Contemporary Art"
+  Minimal_Art: "Post-War & Contemporary Art"
+  Minimalism: "Post-War & Contemporary Art"
+  Pop_Art: "Post-War & Contemporary Art"
+
+  # 7. Traditional East Asian Art
+  Ukiyo_e: "Traditional East Asian Art"
+
+era_map:
+  Early_Renaissance:
+    period: "Quattrocento / Early Renaissance"
+    timeline: "15th Century (c. 1400–1490)"
+  High_Renaissance:
+    period: "High Renaissance / Cinquecento"
+    timeline: "Early 16th Century (c. 1490–1527)"
+  Mannerism_Late_Renaissance:
+    period: "Mannerism (Late Renaissance)"
+    timeline: "Mid-to-Late 16th Century (c. 1520–1600)"
+  Northern_Renaissance:
+    period: "Northern European Renaissance"
+    timeline: "15th – 16th Century (c. 1430–1580)"
+  Baroque:
+    period: "Baroque Era"
+    timeline: "17th – Early 18th Century (c. 1600–1750)"
+  Rococo:
+    period: "Late Baroque & Rococo"
+    timeline: "Mid-18th Century (c. 1730–1770)"
+  Romanticism:
+    period: "Romantic Era"
+    timeline: "Late 18th – Mid-19th Century (c. 1780–1850)"
+  Realism:
+    period: "Mid-19th Century Realism"
+    timeline: "Mid-19th Century (c. 1840–1880)"
+  Contemporary_Realism:
+    period: "Contemporary Realism"
+    timeline: "Late 20th – 21st Century"
+  New_Realism:
+    period: "Nouveau Réalisme / Post-War"
+    timeline: "1960s – 1970s"
+  Impressionism:
+    period: "Impressionist Belle Époque"
+    timeline: "Late 19th Century (c. 1870–1890)"
+  Post_Impressionism:
+    period: "Post-Impressionist Vanguard"
+    timeline: "Fin-de-Siècle (c. 1886–1905)"
+  Pointillism:
+    period: "Neo-Impressionist Divisionism"
+    timeline: "Late 1880s – 1890s"
+  Symbolism:
+    period: "Symbolist Movement"
+    timeline: "Late 19th Century (c. 1880–1900)"
+  Art_Nouveau:
+    period: "Belle Époque / Art Nouveau"
+    timeline: "Turn of the 20th Century (c. 1890–1910)"
+  Fauvism:
+    period: "Early Modernist Avant-Garde"
+    timeline: "c. 1904–1908"
+  Expressionism:
+    period: "Expressionist Vanguard"
+    timeline: "Early 20th Century (c. 1905–1930)"
+  Cubism:
+    period: "Early 20th-Century Cubism"
+    timeline: "c. 1907–1920"
+  Analytical_Cubism:
+    period: "Analytical Cubism"
+    timeline: "c. 1909–1912"
+  Synthetic_Cubism:
+    period: "Synthetic Cubism"
+    timeline: "c. 1912–1919"
+  Naive_Art_Primitivism:
+    period: "Early Modernist Naive / Primitivism"
+    timeline: "Early 20th Century"
+  Abstract_Expressionism:
+    period: "New York School / Post-WWII"
+    timeline: "c. 1940s–1960s"
+  Action_painting:
+    period: "Gestural Post-War Abstraction"
+    timeline: "c. 1945–1960"
+  Color_Field_Painting:
+    period: "Post-Painterly Abstraction"
+    timeline: "c. 1950s–1970s"
+  Minimalism:
+    period: "Minimalist Movement"
+    timeline: "c. 1960s–1970s"
+  Pop_Art:
+    period: "Mid-20th Century Pop Culture"
+    timeline: "c. 1950s–1970s"
+  Ukiyo_e:
+    period: "Edo & Meiji Periods (Japan)"
+    timeline: "17th – Early 20th Century"
+
+technique_map:
+  Early_Renaissance:
+    medium: "Egg tempera on wood panel & fresco"
+    method: "Linear perspective, precise underdrawing, gold leaf gilding"
+  High_Renaissance:
+    medium: "Oil & tempera grassa on panel / canvas"
+    method: "Sfumato blending, chiaroscuro modulation, anatomical drafting"
+  Mannerism_Late_Renaissance:
+    medium: "Oil on primed panel / canvas"
+    method: "Elongated proportions, complex figura serpentinata, stylized palettes"
+  Northern_Renaissance:
+    medium: "Glazed oil painting on oak panel"
+    method: "Luminous multi-layered oil glazes, microscopic surface realism"
+  Baroque:
+    medium: "Oil on canvas"
+    method: "Tenebrism, dramatic directional lighting, bold impasto highlights"
+  Rococo:
+    medium: "Oil on canvas / pastel"
+    method: "Sinuous rocaille brushwork, delicate pastel tones, atmospheric glaze"
+  Romanticism:
+    medium: "Oil on canvas / watercolor"
+    method: "Expressive atmospheric washes, dramatic scumbling, emotive brushwork"
+  Realism:
+    medium: "Oil on canvas"
+    method: "Direct tonal painting (alla prima), earthy mineral pigments, textural truth"
+  Contemporary_Realism:
+    medium: "Oil / acrylic on canvas"
+    method: "Direct observation, photographic acuity, blended optical realism"
+  New_Realism:
+    medium: "Mixed media, assemblage, collage"
+    method: "Direct appropriation of everyday objects, industrial materials"
+  Impressionism:
+    medium: "Oil on primed canvas (plein-air)"
+    method: "Broken brushstrokes, unblended pure pigment, transient optical mixing"
+  Post_Impressionism:
+    medium: "Oil on canvas"
+    method: "Structural brushwork, saturated emotive color planes, symbolic form"
+  Pointillism:
+    medium: "Oil on canvas"
+    method: "Divisionist optical dotting, systematic chromatic theory application"
+  Symbolism:
+    medium: "Oil, gouache, and pastel on canvas/board"
+    method: "Dreamlike veil glazes, decorative flat patterning, evocative outlines"
+  Art_Nouveau:
+    medium: "Oil, watercolor, and lithographic ink"
+    method: "Curvilinear sinuous whiplash contours, flat ornamental design"
+  Fauvism:
+    medium: "Oil on canvas"
+    method: "Wild non-naturalistic color liberation, raw unmixed impasto strokes"
+  Expressionism:
+    medium: "Oil and gouache on coarse canvas"
+    method: "Distorted violent brushmarks, high-contrast emotional pigment application"
+  Cubism:
+    medium: "Oil on canvas, papier collé"
+    method: "Deconstructed spatial facets, multi-perspective flattening, collage elements"
+  Analytical_Cubism:
+    medium: "Monochrome oil on canvas"
+    method: "Subdued earth-tone faceted planes, interwoven geometric grid"
+  Synthetic_Cubism:
+    medium: "Oil, charcoal, pasted newsprint, sandpaper"
+    method: "Flat bright shapes, trompe l'œil textures, multi-media collage"
+  Naive_Art_Primitivism:
+    medium: "Oil on board / canvas"
+    method: "Simplified non-academic flat perspective, bright local color, decorative detail"
+  Abstract_Expressionism:
+    medium: "Enamel, house paint, oil on raw cotton duck"
+    method: "All-over composition, unstretched canvas handling, dynamic physical gesture"
+  Action_painting:
+    medium: "Industrial liquid paint / enamel on canvas"
+    method: "Dripping, pouring, splashing, spontaneous kinetic mark-making"
+  Color_Field_Painting:
+    medium: "Diluted acrylic stain / oil on unprimed canvas"
+    method: "Monolithic color soak-staining, edge-to-edge chromatic immersion"
+  Minimalism:
+    medium: "Industrial acrylic, oil, metallic enamel"
+    method: "Geometric reduction, monochrome flat fields, objective elimination of artist touch"
+  Pop_Art:
+    medium: "Silkscreen ink, acrylic, and synthetic polymer"
+    method: "Commercial screenprinting, Ben-Day dot emulation, crisp hard edges"
+  Ukiyo_e:
+    medium: "Multicolor woodblock print (Nishiki-e) & sumi ink"
+    method: "Carved cherry wood matrices, baren hand-burnishing, bokashi color gradation"
+
+
+

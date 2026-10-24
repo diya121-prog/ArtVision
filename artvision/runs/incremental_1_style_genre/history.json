@@ -1,0 +1,296 @@
+[
+    {
+        "stage": 1,
+        "epoch": 1,
+        "train_loss": 1.4084957399458256,
+        "task_losses": {
+            "style": 1.4084957399458256,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5320197044334976,
+            "style_macro_f1": 0.5325643585619975,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5325643585619975,
+            "val_loss": 1.4057651247297014
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 2,
+        "train_loss": 0.9641326114816485,
+        "task_losses": {
+            "style": 0.9641326114816485,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5270935960591133,
+            "style_macro_f1": 0.5196888577962746,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5196888577962746,
+            "val_loss": 1.3720783335821969
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 3,
+        "train_loss": 0.7818332258260475,
+        "task_losses": {
+            "style": 0.7818332258260475,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5172413793103449,
+            "style_macro_f1": 0.511335540455547,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.511335540455547,
+            "val_loss": 1.3500062227249146
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 4,
+        "train_loss": 0.6588763015450172,
+        "task_losses": {
+            "style": 0.6588763015450172,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5270935960591133,
+            "style_macro_f1": 0.524210848053423,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.524210848053423,
+            "val_loss": 1.3861043623515539
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 5,
+        "train_loss": 0.6160012556696838,
+        "task_losses": {
+            "style": 0.6160012556696838,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5467980295566502,
+            "style_macro_f1": 0.5408833438423402,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5408833438423402,
+            "val_loss": 1.39910204069955
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 1,
+        "train_loss": 0.5150366852868278,
+        "task_losses": {
+            "style": 0.5150366852868278,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5566502463054187,
+            "style_macro_f1": 0.5518507918125047,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5518507918125047,
+            "val_loss": 1.3956612859453474
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 2,
+        "train_loss": 0.45974075569296785,
+        "task_losses": {
+            "style": 0.45974075569296785,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5615763546798029,
+            "style_macro_f1": 0.5604139874371346,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5604139874371346,
+            "val_loss": 1.4554435014724731
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 3,
+        "train_loss": 0.3902084602499908,
+        "task_losses": {
+            "style": 0.3902084602499908,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5566502463054187,
+            "style_macro_f1": 0.5578075623842215,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5578075623842215,
+            "val_loss": 1.3877902116094316
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 4,
+        "train_loss": 0.36022118661763536,
+        "task_losses": {
+            "style": 0.36022118661763536,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5911330049261084,
+            "style_macro_f1": 0.5874230940524724,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5874230940524724,
+            "val_loss": 1.4278693539755685
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 5,
+        "train_loss": 0.29465374645759473,
+        "task_losses": {
+            "style": 0.29465374645759473,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5763546798029556,
+            "style_macro_f1": 0.5663297408646246,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5663297408646246,
+            "val_loss": 1.4726435456957137
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 6,
+        "train_loss": 0.2427461975306835,
+        "task_losses": {
+            "style": 0.2427461975306835,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5714285714285714,
+            "style_macro_f1": 0.5643714916648002,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5643714916648002,
+            "val_loss": 1.5112896817071098
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 7,
+        "train_loss": 0.26475394840510386,
+        "task_losses": {
+            "style": 0.26475394840510386,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5862068965517241,
+            "style_macro_f1": 0.5824478806868975,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5824478806868975,
+            "val_loss": 1.504648038319179
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 8,
+        "train_loss": 0.22387866914834617,
+        "task_losses": {
+            "style": 0.22387866914834617,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5665024630541872,
+            "style_macro_f1": 0.562005967005967,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.562005967005967,
+            "val_loss": 1.530418906893049
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 9,
+        "train_loss": 0.20758821463809823,
+        "task_losses": {
+            "style": 0.20758821463809823,
+            "genre": 0.0
+        },
+        "weights": {
+            "style": 1.0,
+            "genre": 1.0
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5566502463054187,
+            "style_macro_f1": 0.5493168218568809,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mean_macro_f1": 0.5493168218568809,
+            "val_loss": 1.5438580342701502
+        }
+    }
+]

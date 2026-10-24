@@ -1,0 +1,1 @@
+True -> Predicted : Count\nExpressionism -> Symbolism : 5\nImpressionism -> Post_Impressionism : 5\nArt_Nouveau -> Symbolism : 4\nRomanticism -> Symbolism : 4\nArt_Nouveau -> Ukiyo_e : 3\nBaroque -> Symbolism : 3\nHigh_Renaissance -> Baroque : 3\nRealism -> Symbolism : 3\nRomanticism -> Realism : 3\nImpressionism -> Expressionism : 2\n

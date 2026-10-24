@@ -1,0 +1,11 @@
+{
+    "artist": {
+        "num_samples": 3,
+        "accuracy": 0.6666666666666666,
+        "top3_accuracy": 1.0,
+        "macro_f1": 0.5555555555555555,
+        "ece_uncalibrated": 0.492295096317927,
+        "ece_calibrated": 0.489088773727417,
+        "temperature": 1.6383551359176636
+    }
+}

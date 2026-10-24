@@ -1,0 +1,138 @@
+[
+    {
+        "stage": 1,
+        "epoch": 1,
+        "train_loss": 1.2052492758013167,
+        "task_losses": {
+            "style": 1.5245799298556346,
+            "artist": 0.14303953242751788,
+            "genre": 0.0,
+            "mood": 0.39624354946163465,
+            "authenticity": 0.38175213083905996
+        },
+        "weights": {
+            "style": 0.9793308512219843,
+            "artist": 1.0006965207603742,
+            "genre": 1.0,
+            "mood": 1.0205913039873231,
+            "authenticity": 1.027647025180313
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5172413793103449,
+            "style_macro_f1": 0.5091886603084811,
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mood_accuracy": 0.3333333333333333,
+            "mood_macro_f1": 0.15,
+            "authenticity_accuracy": 0.9043062200956937,
+            "authenticity_macro_f1": 0.9043040293040293,
+            "authenticity_auroc": 0.9678899082568807,
+            "mean_macro_f1": 0.5297620612920164,
+            "val_loss": 0.9664341807365417
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 2,
+        "train_loss": 0.6951817403424461,
+        "task_losses": {
+            "style": 0.9951856091337384,
+            "artist": 0.01986324033872356,
+            "genre": 0.0,
+            "mood": 0.2429296115659318,
+            "authenticity": 0.23475950056651854
+        },
+        "weights": {
+            "style": 0.9608288699725889,
+            "artist": 1.0025172447258572,
+            "genre": 1.0,
+            "mood": 1.0728395300091438,
+            "authenticity": 1.0888854737551708
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5221674876847291,
+            "style_macro_f1": 0.5160683998023426,
+            "artist_accuracy": 0.6666666666666666,
+            "artist_macro_f1": 0.5555555555555555,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mood_accuracy": 0.1111111111111111,
+            "mood_macro_f1": 0.08333333333333333,
+            "authenticity_accuracy": 0.9186602870813397,
+            "authenticity_macro_f1": 0.9184736467726762,
+            "authenticity_auroc": 0.97348623853211,
+            "mean_macro_f1": 0.5183577338659768,
+            "val_loss": 0.8951200246810913
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 1,
+        "train_loss": 0.47809729879757146,
+        "task_losses": {
+            "style": 0.8212334659864318,
+            "artist": 0.0026497308079445436,
+            "genre": 0.0,
+            "mood": 0.14923695109362872,
+            "authenticity": 0.1644197034667123
+        },
+        "weights": {
+            "style": 0.9733581936584329,
+            "artist": 1.0181555118200913,
+            "genre": 1.0,
+            "mood": 1.1153089077967517,
+            "authenticity": 1.135731798297954
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5369458128078818,
+            "style_macro_f1": 0.5291475538352521,
+            "artist_accuracy": 1.0,
+            "artist_macro_f1": 1.0,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mood_accuracy": 0.1111111111111111,
+            "mood_macro_f1": 0.125,
+            "authenticity_accuracy": 0.9043062200956937,
+            "authenticity_macro_f1": 0.9041987532086542,
+            "authenticity_auroc": 0.9764220183486237,
+            "mean_macro_f1": 0.6395865767609765,
+            "val_loss": 0.8588538340159825
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 2,
+        "train_loss": 0.35967158540239874,
+        "task_losses": {
+            "style": 0.6877728756868614,
+            "artist": 0.00098768752293424,
+            "genre": 0.0,
+            "mood": 0.10515423175298942,
+            "authenticity": 0.13732242942699846
+        },
+        "weights": {
+            "style": 0.9914299260895207,
+            "artist": 1.0247034284303773,
+            "genre": 1.0,
+            "mood": 1.1356113901678122,
+            "authenticity": 1.1585288407667629
+        },
+        "val_metrics": {
+            "style_accuracy": 0.5615763546798029,
+            "style_macro_f1": 0.5540593656190576,
+            "artist_accuracy": 1.0,
+            "artist_macro_f1": 1.0,
+            "genre_macro_f1": 0.0,
+            "genre_accuracy": 0.0,
+            "mood_accuracy": 0.2222222222222222,
+            "mood_macro_f1": 0.18333333333333335,
+            "authenticity_accuracy": 0.9282296650717703,
+            "authenticity_macro_f1": 0.9282033665407077,
+            "authenticity_auroc": 0.9820183486238532,
+            "mean_macro_f1": 0.6663990163732747,
+            "val_loss": 0.8326122888496944
+        }
+    }
+]

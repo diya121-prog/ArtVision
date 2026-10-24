@@ -1,0 +1,313 @@
+{
+    "single_task": {
+        "authenticity": {
+            "num_samples": 209,
+            "accuracy": 0.9569377990430622,
+            "macro_f1": 0.9568389894678874,
+            "auroc": 0.985045871559633,
+            "ece_uncalibrated": 0.02404389370001106,
+            "ece_calibrated": 0.02498390743036589,
+            "temperature": 1.0219330787658691
+        },
+        "mood": {
+            "num_samples": 9,
+            "accuracy": 0.5555555555555556,
+            "top3_accuracy": 0.8888888888888888,
+            "macro_f1": 0.35416666666666663,
+            "ece_uncalibrated": 0.25778720776240027,
+            "ece_calibrated": 0.2598811288674673,
+            "temperature": 1.2957370281219482
+        },
+        "artist": {
+            "num_samples": 3,
+            "accuracy": 0.6666666666666666,
+            "top3_accuracy": 1.0,
+            "macro_f1": 0.5555555555555555,
+            "ece_uncalibrated": 0.492295096317927,
+            "ece_calibrated": 0.489088773727417,
+            "temperature": 1.6383551359176636
+        },
+        "style": {
+            "accuracy": 0.49,
+            "macro_f1": 0.4722,
+            "source": "Phase 3 Best Checkpoint"
+        }
+    },
+    "incremental": {
+        "step1_style_genre": {
+            "style": {
+                "num_samples": 203,
+                "accuracy": 0.5911330049261084,
+                "top3_accuracy": 0.7931034482758621,
+                "macro_f1": 0.5874230940524724,
+                "ece_uncalibrated": 0.09528360519503139,
+                "ece_calibrated": 0.06896844095197217,
+                "temperature": 1.4942997694015503
+            },
+            "derived_movement": {
+                "accuracy": 0.7783251231527094,
+                "num_samples": 203
+            }
+        },
+        "step2_plus_artist": {
+            "style": {
+                "num_samples": 203,
+                "accuracy": 0.5320197044334976,
+                "top3_accuracy": 0.7931034482758621,
+                "macro_f1": 0.5305593258695974,
+                "ece_uncalibrated": 0.13528955687443026,
+                "ece_calibrated": 0.07989922041082617,
+                "temperature": 1.4403705596923828
+            },
+            "derived_movement": {
+                "accuracy": 0.7586206896551724,
+                "num_samples": 203
+            },
+            "artist": {
+                "num_samples": 3,
+                "accuracy": 0.6666666666666666,
+                "top3_accuracy": 1.0,
+                "macro_f1": 0.5555555555555555,
+                "ece_uncalibrated": 0.4196297824382782,
+                "ece_calibrated": 0.43619753917058307,
+                "temperature": 1.500024676322937
+            }
+        },
+        "step3_plus_mood": {
+            "style": {
+                "num_samples": 203,
+                "accuracy": 0.5615763546798029,
+                "top3_accuracy": 0.7881773399014779,
+                "macro_f1": 0.5588058830640895,
+                "ece_uncalibrated": 0.11559538198222079,
+                "ece_calibrated": 0.05872824494474628,
+                "temperature": 1.4938894510269165
+            },
+            "derived_movement": {
+                "accuracy": 0.7684729064039408,
+                "num_samples": 203
+            },
+            "artist": {
+                "num_samples": 3,
+                "accuracy": 0.6666666666666666,
+                "top3_accuracy": 1.0,
+                "macro_f1": 0.5555555555555555,
+                "ece_uncalibrated": 0.40987527370452875,
+                "ece_calibrated": 0.4308364341656367,
+                "temperature": 1.736902117729187
+            },
+            "mood": {
+                "num_samples": 9,
+                "accuracy": 0.3333333333333333,
+                "top3_accuracy": 0.7777777777777778,
+                "macro_f1": 0.25,
+                "ece_uncalibrated": 0.1988833083046807,
+                "ece_calibrated": 0.0967306693394979,
+                "temperature": 1.2759723663330078
+            }
+        },
+        "step4_plus_authenticity": {
+            "style": {
+                "num_samples": 203,
+                "accuracy": 0.5517241379310345,
+                "top3_accuracy": 0.8325123152709359,
+                "macro_f1": 0.5479441924100094,
+                "ece_uncalibrated": 0.12430519973996826,
+                "ece_calibrated": 0.0897933108172393,
+                "temperature": 1.4229234457015991
+            },
+            "derived_movement": {
+                "accuracy": 0.7586206896551724,
+                "num_samples": 203
+            },
+            "artist": {
+                "num_samples": 3,
+                "accuracy": 0.6666666666666666,
+                "top3_accuracy": 1.0,
+                "macro_f1": 0.5555555555555555,
+                "ece_uncalibrated": 0.48017928004264826,
+                "ece_calibrated": 0.4638660748799642,
+                "temperature": 1.48932945728302
+            },
+            "mood": {
+                "num_samples": 9,
+                "accuracy": 0.4444444444444444,
+                "top3_accuracy": 0.7777777777777778,
+                "macro_f1": 0.2857142857142857,
+                "ece_uncalibrated": 0.3507793115244971,
+                "ece_calibrated": 0.11596528357929653,
+                "temperature": 1.68328857421875
+            },
+            "authenticity": {
+                "num_samples": 209,
+                "accuracy": 0.9282296650717703,
+                "macro_f1": 0.9281704662618857,
+                "auroc": 0.9798165137614678,
+                "ece_uncalibrated": 0.02252767759076712,
+                "ece_calibrated": 0.025393748682651804,
+                "temperature": 1.1778182983398438
+            }
+        }
+    },
+    "loss_weighting_ablation": {
+        "equal": {
+            "style": {
+                "num_samples": 203,
+                "accuracy": 0.5517241379310345,
+                "top3_accuracy": 0.8325123152709359,
+                "macro_f1": 0.5479441924100094,
+                "ece_uncalibrated": 0.12430519973996826,
+                "ece_calibrated": 0.0897933108172393,
+                "temperature": 1.4229234457015991
+            },
+            "derived_movement": {
+                "accuracy": 0.7586206896551724,
+                "num_samples": 203
+            },
+            "artist": {
+                "num_samples": 3,
+                "accuracy": 0.6666666666666666,
+                "top3_accuracy": 1.0,
+                "macro_f1": 0.5555555555555555,
+                "ece_uncalibrated": 0.48017928004264826,
+                "ece_calibrated": 0.4638660748799642,
+                "temperature": 1.48932945728302
+            },
+            "mood": {
+                "num_samples": 9,
+                "accuracy": 0.4444444444444444,
+                "top3_accuracy": 0.7777777777777778,
+                "macro_f1": 0.2857142857142857,
+                "ece_uncalibrated": 0.3507793115244971,
+                "ece_calibrated": 0.11596528357929653,
+                "temperature": 1.68328857421875
+            },
+            "authenticity": {
+                "num_samples": 209,
+                "accuracy": 0.9282296650717703,
+                "macro_f1": 0.9281704662618857,
+                "auroc": 0.9798165137614678,
+                "ece_uncalibrated": 0.02252767759076712,
+                "ece_calibrated": 0.025393748682651804,
+                "temperature": 1.1778182983398438
+            }
+        },
+        "manual": {
+            "style": {
+                "num_samples": 203,
+                "accuracy": 0.5517241379310345,
+                "top3_accuracy": 0.8325123152709359,
+                "macro_f1": 0.5479441924100094,
+                "ece_uncalibrated": 0.12430519973996826,
+                "ece_calibrated": 0.0897933108172393,
+                "temperature": 1.4229234457015991
+            },
+            "derived_movement": {
+                "accuracy": 0.7586206896551724,
+                "num_samples": 203
+            },
+            "artist": {
+                "num_samples": 3,
+                "accuracy": 0.6666666666666666,
+                "top3_accuracy": 1.0,
+                "macro_f1": 0.5555555555555555,
+                "ece_uncalibrated": 0.48017928004264826,
+                "ece_calibrated": 0.4638660748799642,
+                "temperature": 1.48932945728302
+            },
+            "mood": {
+                "num_samples": 9,
+                "accuracy": 0.4444444444444444,
+                "top3_accuracy": 0.7777777777777778,
+                "macro_f1": 0.2857142857142857,
+                "ece_uncalibrated": 0.3507793115244971,
+                "ece_calibrated": 0.11596528357929653,
+                "temperature": 1.68328857421875
+            },
+            "authenticity": {
+                "num_samples": 209,
+                "accuracy": 0.9282296650717703,
+                "macro_f1": 0.9281704662618857,
+                "auroc": 0.9798165137614678,
+                "ece_uncalibrated": 0.02252767759076712,
+                "ece_calibrated": 0.025393748682651804,
+                "temperature": 1.1778182983398438
+            }
+        },
+        "uncertainty": {
+            "style": {
+                "num_samples": 203,
+                "accuracy": 0.5763546798029556,
+                "top3_accuracy": 0.7832512315270936,
+                "macro_f1": 0.5745589818824736,
+                "ece_uncalibrated": 0.14020465497900111,
+                "ece_calibrated": 0.0691091259712069,
+                "temperature": 1.7351714372634888
+            },
+            "derived_movement": {
+                "accuracy": 0.7684729064039408,
+                "num_samples": 203
+            },
+            "artist": {
+                "num_samples": 3,
+                "accuracy": 0.6666666666666666,
+                "top3_accuracy": 1.0,
+                "macro_f1": 0.5555555555555555,
+                "ece_uncalibrated": 0.48138388991355896,
+                "ece_calibrated": 0.46000277002652484,
+                "temperature": 2.3426058292388916
+            },
+            "mood": {
+                "num_samples": 9,
+                "accuracy": 0.4444444444444444,
+                "top3_accuracy": 0.7777777777777778,
+                "macro_f1": 0.30952380952380953,
+                "ece_uncalibrated": 0.2582095828321245,
+                "ece_calibrated": 0.17790576484468246,
+                "temperature": 1.7487297058105469
+            },
+            "authenticity": {
+                "num_samples": 209,
+                "accuracy": 0.9521531100478469,
+                "macro_f1": 0.9520993766043271,
+                "auroc": 0.9858715596330275,
+                "ece_uncalibrated": 0.026744081072830155,
+                "ece_calibrated": 0.0422957881786036,
+                "temperature": 1.2147736549377441
+            }
+        }
+    },
+    "final_test_evaluation": {
+        "style": {
+            "num_samples": 201,
+            "accuracy": 0.6517412935323383,
+            "top3_accuracy": 0.845771144278607,
+            "macro_f1": 0.6488888606160301,
+            "ece_uncalibrated": 0.12936396073939194,
+            "ece_calibrated": 0.07433138676543735,
+            "temperature": 1.7351714372634888
+        },
+        "derived_movement": {
+            "accuracy": 0.845771144278607,
+            "num_samples": 201
+        },
+        "mood": {
+            "num_samples": 11,
+            "accuracy": 0.36363636363636365,
+            "top3_accuracy": 0.8181818181818182,
+            "macro_f1": 0.2814814814814815,
+            "ece_uncalibrated": 0.08579553799195723,
+            "ece_calibrated": 0.053518558090383375,
+            "temperature": 1.7487297058105469
+        },
+        "authenticity": {
+            "num_samples": 211,
+            "accuracy": 0.919431279620853,
+            "macro_f1": 0.9193660784534112,
+            "auroc": 0.9816216216216216,
+            "ece_uncalibrated": 0.030430392066449354,
+            "ece_calibrated": 0.021583364473134997,
+            "temperature": 1.2147736549377441
+        }
+    }
+}

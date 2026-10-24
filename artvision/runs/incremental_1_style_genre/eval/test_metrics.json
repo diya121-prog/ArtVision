@@ -1,0 +1,15 @@
+{
+    "style": {
+        "num_samples": 203,
+        "accuracy": 0.5911330049261084,
+        "top3_accuracy": 0.7931034482758621,
+        "macro_f1": 0.5874230940524724,
+        "ece_uncalibrated": 0.09528360519503139,
+        "ece_calibrated": 0.06896844095197217,
+        "temperature": 1.4942997694015503
+    },
+    "derived_movement": {
+        "accuracy": 0.7783251231527094,
+        "num_samples": 203
+    }
+}

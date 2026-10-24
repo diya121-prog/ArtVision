@@ -1,0 +1,11 @@
+{
+    "authenticity": {
+        "num_samples": 209,
+        "accuracy": 0.9569377990430622,
+        "macro_f1": 0.9568389894678874,
+        "auroc": 0.985045871559633,
+        "ece_uncalibrated": 0.02404389370001106,
+        "ece_calibrated": 0.02498390743036589,
+        "temperature": 1.0219330787658691
+    }
+}

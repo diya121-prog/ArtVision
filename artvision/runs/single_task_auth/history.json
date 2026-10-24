@@ -1,0 +1,218 @@
+[
+    {
+        "stage": 1,
+        "epoch": 1,
+        "train_loss": 0.17153486243958743,
+        "task_losses": {
+            "authenticity": 0.36194340884685516
+        },
+        "weights": {
+            "authenticity": 1.027768204796989
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9282296650717703,
+            "authenticity_macro_f1": 0.9282230922453465,
+            "authenticity_auroc": 0.9718348623853211,
+            "mean_macro_f1": 0.9282230922453465,
+            "val_loss": 0.10836752929857799
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 2,
+        "train_loss": 0.07089446991119745,
+        "task_losses": {
+            "authenticity": 0.20902365642898488
+        },
+        "weights": {
+            "authenticity": 1.0893201558095105
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9043062200956937,
+            "authenticity_macro_f1": 0.9043040293040293,
+            "authenticity_auroc": 0.9714678899082568,
+            "mean_macro_f1": 0.9043040293040293,
+            "val_loss": 0.07042183194841657
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 3,
+        "train_loss": 0.017778641350989072,
+        "task_losses": {
+            "authenticity": 0.15571090621205996
+        },
+        "weights": {
+            "authenticity": 1.1552845442070152
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9330143540669856,
+            "authenticity_macro_f1": 0.9330128205128205,
+            "authenticity_auroc": 0.9789908256880734,
+            "mean_macro_f1": 0.9330128205128205,
+            "val_loss": 0.0345337518623897
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 4,
+        "train_loss": -0.02011284885822602,
+        "task_losses": {
+            "authenticity": 0.1323192983444007
+        },
+        "weights": {
+            "authenticity": 1.2242925571945478
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9186602870813397,
+            "authenticity_macro_f1": 0.9185931950968038,
+            "authenticity_auroc": 0.9807339449541284,
+            "mean_macro_f1": 0.9185931950968038,
+            "val_loss": 0.004303571368966784
+        }
+    },
+    {
+        "stage": 1,
+        "epoch": 5,
+        "train_loss": -0.040106391499065,
+        "task_losses": {
+            "authenticity": 0.13780963343550573
+        },
+        "weights": {
+            "authenticity": 1.2955016190150999
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9043062200956937,
+            "authenticity_macro_f1": 0.9041284403669725,
+            "authenticity_auroc": 0.9739449541284403,
+            "mean_macro_f1": 0.9041284403669725,
+            "val_loss": -4.3334705489022394e-05
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 1,
+        "train_loss": -0.07821138568644254,
+        "task_losses": {
+            "authenticity": 0.10611508860481235
+        },
+        "weights": {
+            "authenticity": 1.349587323530665
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9425837320574163,
+            "authenticity_macro_f1": 0.9424770642201834,
+            "authenticity_auroc": 0.9844036697247707,
+            "mean_macro_f1": 0.9424770642201834,
+            "val_loss": -0.04146526328154972
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 2,
+        "train_loss": -0.10673238449501542,
+        "task_losses": {
+            "authenticity": 0.08114346489310265
+        },
+        "weights": {
+            "authenticity": 1.3852873208387844
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9569377990430622,
+            "authenticity_macro_f1": 0.9568389894678874,
+            "authenticity_auroc": 0.985045871559633,
+            "mean_macro_f1": 0.9568389894678874,
+            "val_loss": -0.061141155660152435
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 3,
+        "train_loss": -0.126596192846883,
+        "task_losses": {
+            "authenticity": 0.06944213823397767
+        },
+        "weights": {
+            "authenticity": 1.421962706547863
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9521531100478469,
+            "authenticity_macro_f1": 0.9520993766043271,
+            "authenticity_auroc": 0.9890825688073395,
+            "mean_macro_f1": 0.9520993766043271,
+            "val_loss": -0.08765846597296852
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 4,
+        "train_loss": -0.14467698996359446,
+        "task_losses": {
+            "authenticity": 0.06010611420321577
+        },
+        "weights": {
+            "authenticity": 1.4581395342664898
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9521531100478469,
+            "authenticity_macro_f1": 0.952020202020202,
+            "authenticity_auroc": 0.9857798165137615,
+            "mean_macro_f1": 0.952020202020202,
+            "val_loss": -0.09073203376361302
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 5,
+        "train_loss": -0.16992831230163574,
+        "task_losses": {
+            "authenticity": 0.04069053441426664
+        },
+        "weights": {
+            "authenticity": 1.4927719134204793
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9521531100478469,
+            "authenticity_macro_f1": 0.952125710097123,
+            "authenticity_auroc": 0.9877064220183487,
+            "mean_macro_f1": 0.952125710097123,
+            "val_loss": -0.09841723207916532
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 6,
+        "train_loss": -0.17700995392394517,
+        "task_losses": {
+            "authenticity": 0.0447434023778253
+        },
+        "weights": {
+            "authenticity": 1.5254603354436047
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9569377990430622,
+            "authenticity_macro_f1": 0.9567437047257675,
+            "authenticity_auroc": 0.9852293577981651,
+            "mean_macro_f1": 0.9567437047257675,
+            "val_loss": -0.10237780213356018
+        }
+    },
+    {
+        "stage": 2,
+        "epoch": 7,
+        "train_loss": -0.1880081388747917,
+        "task_losses": {
+            "authenticity": 0.0419806297692769
+        },
+        "weights": {
+            "authenticity": 1.5547208741026104
+        },
+        "val_metrics": {
+            "authenticity_accuracy": 0.9569377990430622,
+            "authenticity_macro_f1": 0.9568389894678874,
+            "authenticity_auroc": 0.9874311926605505,
+            "mean_macro_f1": 0.9568389894678874,
+            "val_loss": -0.11716983893087932
+        }
+    }
+]

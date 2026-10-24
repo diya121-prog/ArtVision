@@ -1,0 +1,21 @@
+# Inference configuration with per-head uncertainty thresholds
+# Top-1 confidence must exceed min_confidence AND margin over second-best must exceed min_margin
+# Otherwise "uncertain": true is flagged in prediction output.
+
+uncertainty:
+  style:
+    min_confidence: 0.45
+    min_margin: 0.12
+  artist:
+    min_confidence: 0.45
+    min_margin: 0.15
+  genre:
+    min_confidence: 0.45
+    min_margin: 0.12
+  mood:
+    min_confidence: 0.35
+    min_margin: 0.08
+  authenticity:
+    min_confidence: 0.75
+    min_margin: 0.30
+
