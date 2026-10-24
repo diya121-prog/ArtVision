@@ -134,6 +134,11 @@ class GradCAM:
         else:
             cam_np = np.zeros_like(cam_np)
 
+        # Free gradient buffers immediately to keep memory footprint minimal
+        self.model.zero_grad(set_to_none=True)
+        self.activations = None
+        self.gradients = None
+
         return cam_np
 
 

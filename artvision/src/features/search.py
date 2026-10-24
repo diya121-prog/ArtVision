@@ -28,7 +28,7 @@ class ArtworkSearcher:
         if not os.path.exists(image_ids_path):
             raise FileNotFoundError(f"Metadata not found at: {image_ids_path}")
 
-        self.embeddings = np.load(embeddings_path) # [N, 1280]
+        self.embeddings = np.load(embeddings_path, mmap_mode="r") # Memory-mapped [N, 1280]
         with open(image_ids_path, "r") as f:
             self.metadata = json.load(f)
 
@@ -46,13 +46,16 @@ class ArtworkSearcher:
 
     def _get_model(self):
         if self._model is None:
-            ckpt = torch.load(self.checkpoint_path, map_location="cpu")
-            config = ckpt["config"]
-            model = MultiTaskModel(config)
-            model.load_state_dict(ckpt["model_state_dict"])
-            model.to(self.device)
-            model.eval()
-            self._model = model
+            try:
+                from predict import get_shared_multitask_model
+                self._model, _ = get_shared_multitask_model(self.checkpoint_path, self.device)
+            except Exception:
+                ckpt = torch.load(self.checkpoint_path, map_location="cpu")
+                model = MultiTaskModel(ckpt["config"])
+                model.load_state_dict(ckpt["model_state_dict"])
+                model.to(self.device)
+                model.eval()
+                self._model = model
         return self._model
 
     def extract_query_embedding(self, query: Union[str, Image.Image, torch.Tensor]) -> np.ndarray:

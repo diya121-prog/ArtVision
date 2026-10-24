@@ -38,6 +38,13 @@ COPY --from=frontend-builder /app/frontend/dist /app/artvision/frontend/dist
 # Set working directory to artvision
 WORKDIR /app/artvision
 
+# Optimization flags for memory-constrained container runtime
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    MALLOC_ARENA_MAX=2 \
+    OMP_NUM_THREADS=1 \
+    MKL_NUM_THREADS=1
+
 # Expose port (7860 is standard for Hugging Face Spaces, 8000 for local)
 EXPOSE 7860
 

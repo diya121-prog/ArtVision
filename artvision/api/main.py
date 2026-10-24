@@ -9,6 +9,8 @@ from email.parser import BytesParser
 
 import yaml
 from PIL import Image
+import torch
+torch.set_num_threads(1)
 from fastapi import FastAPI, Request, HTTPException, Query, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -183,6 +185,8 @@ async def predict_endpoint(
                 os.remove(temp_path)
             except Exception:
                 pass
+        import gc
+        gc.collect()
 
 
 @app.post("/similar", summary="Artwork Similarity Search")

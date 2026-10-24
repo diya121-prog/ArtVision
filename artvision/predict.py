@@ -18,6 +18,37 @@ from src.explain.gradcam import GradCAM, overlay_heatmap, calculate_border_mass_
 _cached_single_auth_model = None
 _cached_single_auth_path = None
 
+_cached_multitask_model = None
+_cached_multitask_path = None
+_cached_metadata = None
+
+def get_shared_multitask_model(ckpt_path: str, device):
+    global _cached_multitask_model, _cached_multitask_path, _cached_metadata
+    if _cached_multitask_model is not None and _cached_multitask_path == ckpt_path:
+        return _cached_multitask_model, _cached_metadata
+    if not os.path.exists(ckpt_path):
+        raise FileNotFoundError(f"Checkpoint not found at: {ckpt_path}")
+    ckpt = torch.load(ckpt_path, map_location="cpu")
+    config = ckpt["config"]
+    m = MultiTaskModel(config)
+    m.load_state_dict(ckpt["model_state_dict"])
+    m.to(device)
+    m.eval()
+    meta = {
+        "config": config,
+        "style_classes": ckpt.get("style_classes", []),
+        "artist_classes": ckpt.get("artist_classes", []),
+        "mood_classes": ckpt.get("mood_classes", []),
+        "genre_classes": ckpt.get("genre_classes", []),
+    }
+    del ckpt
+    import gc
+    gc.collect()
+    _cached_multitask_model = m
+    _cached_multitask_path = ckpt_path
+    _cached_metadata = meta
+    return _cached_multitask_model, _cached_metadata
+
 def get_single_auth_model(ckpt_path: str, device):
     global _cached_single_auth_model, _cached_single_auth_path
     if _cached_single_auth_model is not None and _cached_single_auth_path == ckpt_path:
@@ -52,11 +83,8 @@ def predict_artwork(
     else:
         device = torch.device(device)
 
-    if not os.path.exists(checkpoint_path):
-        raise FileNotFoundError(f"Checkpoint not found at: {checkpoint_path}")
-
-    ckpt = torch.load(checkpoint_path, map_location="cpu")
-    config = ckpt["config"]
+    model, meta = get_shared_multitask_model(checkpoint_path, device)
+    config = meta["config"]
 
     # Load predict / uncertainty config
     if predict_config_path is None:
@@ -96,16 +124,10 @@ def predict_artwork(
     era_map = label_maps.get("era_map", {})
     technique_map = label_maps.get("technique_map", {})
 
-    style_classes = ckpt.get("style_classes", [])
-    artist_classes = ckpt.get("artist_classes", [])
-    mood_classes = ckpt.get("mood_classes", [])
-    genre_classes = ckpt.get("genre_classes", [])
-
-    # Load Model
-    model = MultiTaskModel(config)
-    model.load_state_dict(ckpt["model_state_dict"])
-    model.to(device)
-    model.eval()
+    style_classes = meta["style_classes"]
+    artist_classes = meta["artist_classes"]
+    mood_classes = meta["mood_classes"]
+    genre_classes = meta["genre_classes"]
 
     # Load Calibration
     scaler = TemperatureScaler()
@@ -377,6 +399,9 @@ def predict_artwork(
             }
     else:
         result["explanation"] = None
+
+    import gc
+    gc.collect()
 
     return result
 

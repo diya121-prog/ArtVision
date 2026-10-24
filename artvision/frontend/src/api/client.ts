@@ -145,25 +145,18 @@ export async function predictArtwork(
   const similarFormData = new FormData();
   similarFormData.append('image', file);
 
-  // Execute predict and similar concurrently
-  const [predictResult, similarResult] = await Promise.allSettled([
-    fetch(predictUrl, {
+  // Execute predict and similar sequentially to avoid memory spikes on low-RAM containers
+  let response: Response;
+  try {
+    response = await fetch(predictUrl, {
       method: 'POST',
       headers: { Accept: 'application/json' },
       body: predictFormData,
-    }),
-    fetch(similarUrl, {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: similarFormData,
-    }),
-  ]);
-
-  if (predictResult.status === 'rejected') {
-    throw new Error(`Failed to connect to ArtVision API at ${baseUrl}: ${predictResult.reason.message}`);
+    });
+  } catch (err: any) {
+    throw new Error(`Failed to connect to ArtVision API: ${err.message || err}`);
   }
 
-  const response = predictResult.value;
   if (!response.ok) {
     let errorDetail = `API Error ${response.status}: ${response.statusText}`;
     try {
@@ -190,10 +183,15 @@ export async function predictArtwork(
     }
   }
 
-  // Merge results from /similar endpoint if available
-  if (similarResult.status === 'fulfilled' && similarResult.value.ok) {
-    try {
-      const simJson = await similarResult.value.json();
+  // Non-blocking retrieval pass: fetch similar artworks sequentially
+  try {
+    const similarResponse = await fetch(similarUrl, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: similarFormData,
+    });
+    if (similarResponse.ok) {
+      const simJson = await similarResponse.json();
       if (simJson && Array.isArray(simJson.results)) {
         data.similar = simJson.results.map((r: Record<string, unknown>): SimilarArtwork => ({
           image_id: String(r.image_id || ''),
@@ -206,9 +204,9 @@ export async function predictArtwork(
           is_ai_generated: Boolean(r.is_ai_generated),
         }));
       }
-    } catch (e) {
-      console.warn('Could not parse similarity search response:', e);
     }
+  } catch (e) {
+    console.warn('Could not complete similarity retrieval pass:', e);
   }
 
   return data;
